@@ -1,0 +1,14 @@
+{
+    "require": {
+        "silex/silex": "~1.1",
+        "litek/silex-php-engine": "dev-master",
+        "mustache/mustache": "~2.1",
+        "monolog/monolog": ">=1.0.0",
+        "symfony/twig-bridge": "~2.3",
+        "twig/twig": ">=1.8,<2.0-dev",
+        "symfony/validator": "~2.3",
+        "symfony/twig-bridge": "~2.3",
+        "symfony/form": "~2.3",
+        "doctrine/mongodb-odm": "~1.0.0-BETA9@dev"
+    }
+}
