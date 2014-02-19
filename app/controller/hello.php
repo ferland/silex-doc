@@ -1,4 +1,13 @@
 <?php
+use Documents\User;
+
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('hello.twig');
+	// Your code here...
+	$user = new User();
+	$user->setUsername('Bulat S.');
+
+	// tell Doctrine 2 to save $user on the next flush()
+	$app['dm']->persist($user);
+	
+	return $app['dm']->flush();
 });
