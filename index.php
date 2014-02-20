@@ -21,7 +21,7 @@ $config->setProxyDir(ROOT . '/app/assets/Proxies');
 $config->setProxyNamespace('Proxies');
 $config->setHydratorDir(ROOT . '/app/assets/Hydrators');
 $config->setHydratorNamespace('Hydrators');
-$config->setDefaultDB('doctrine_odm_sandbox');
+$config->setDefaultDB('ccapps');
 $config->setMetadataDriverImpl(AnnotationDriver::create(ROOT . '/app/Documents'));
 
 AnnotationDriver::registerAnnotationClasses();
