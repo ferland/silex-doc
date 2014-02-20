@@ -14,7 +14,7 @@ class Address
     protected $city;
 
     /** @ODM\String */
-    protected $state;
+    protected $Province;
 
     /** @ODM\String */
     protected $postalCode;
@@ -39,12 +39,12 @@ class Address
         $this->city = $city;
     }
 
-    public function getState()
+    public function getProvince()
     {
         return $this->state;
     }
 
-    public function setState($state)
+    public function setProvince($state)
     {
         $this->state = $state;
     }
