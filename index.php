@@ -11,11 +11,12 @@ $loader->add('Documents', ROOT.'/app');
 
 $app = new Silex\Application();
 
-$app['debug'] = getenv('MYAPP_DEBUG') == 'true' ?: false;
+$app['debug'] = getenv('env') == 'true' ?: false;
 
 //register log
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => ROOT.'/public/logs/development.log',
+    'monolog.level' => Monolog\Logger::ERROR
 ));
 
 $app->register(new Silex\Provider\SessionServiceProvider());
