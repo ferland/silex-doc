@@ -10,6 +10,12 @@ $app->get('/', function () use ($app) {
 	$app['dm']->persist($user);
 
 	$app['dm']->flush();
-	
-	return $app['twig']->render('hello.twig');
+
+  $data = array();
+
+  $data['title'] = "Silex skeleton app";
+
+  $data['content'] = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.";
+
+	return $app['twig']->render('hello.twig', $data);
 });

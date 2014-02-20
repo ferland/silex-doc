@@ -1,2 +1,10 @@
 vendor/
 app/logs/
+temp/
+node_modules/
+npm-debug.log
+.DS_Store
+*.log
+public/logs/*
+app/logs
+public/logs/development.log

@@ -37,16 +37,16 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 
 $app->register(new Silex\Provider\SessionServiceProvider());
 
+// view
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => ROOT.'/app/view',
 ));
 
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 
-// view
 $app->register(new SilexPhpEngine\ViewServiceProvider, [
   'view.paths'  => ROOT.'/app/view/%name%.php',
-  'assets.root' => '../assets'
+  'assets.root' => 'public'
 ]);
 
 // controllers
