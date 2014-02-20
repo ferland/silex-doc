@@ -8,6 +8,8 @@ $app->get('/', function () use ($app) {
 
 	// tell Doctrine 2 to save $user on the next flush()
 	$app['dm']->persist($user);
+
+	$app['dm']->flush();
 	
-	return $app['dm']->flush();
+	return $app['twig']->render('hello.twig');
 });
