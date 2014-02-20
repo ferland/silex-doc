@@ -28,18 +28,18 @@ module.exports = function(grunt) {
       basic_and_extras: {
         files: {
           'public/js/bootstrap.js': [
-            'public/js/transition.js',
-            'public/js/alert.js',
-            'public/js/button.js',
-            'public/js/carousel.js',
-            'public/js/collapse.js',
-            'public/js/dropdown.js',
-            'public/js/modal.js',
-            'public/js/tooltip.js',
-            'public/js/popover.js',
-            'public/js/scrollspy.js',
-            'public/js/tab.js',
-            'public/js/affix.js'
+            'public/js/bootstrap/transition.js',
+            'public/js/bootstrap/alert.js',
+            'public/js/bootstrap/button.js',
+            'public/js/bootstrap/carousel.js',
+            'public/js/bootstrap/collapse.js',
+            'public/js/bootstrap/dropdown.js',
+            'public/js/bootstrap/modal.js',
+            'public/js/bootstrap/tooltip.js',
+            'public/js/bootstrap/popover.js',
+            'public/js/bootstrap/scrollspy.js',
+            'public/js/bootstrap/tab.js',
+            'public/js/bootstrap/affix.js'
           ],
           'public/js/apps.js' : ['public/js/sites/*.js'],
         }
