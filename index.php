@@ -28,6 +28,8 @@ AnnotationDriver::registerAnnotationClasses();
 
 $app = new Silex\Application();
 
+$app['debug'] = getenv('MYAPP_DEBUG') == 'true' ?: false;
+
 $app['dm'] = $dm = DocumentManager::create($connection, $config);
 
 //register log
@@ -40,14 +42,22 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 // view
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => ROOT.'/app/view',
+    'twig.class_path'   => __DIR__.'/vendor/twig/lib',
 ));
 
-$app->register(new Silex\Provider\ValidatorServiceProvider());
+$app->before(function () use ($app) {
+    $app['twig']->addGlobal('layout', null);
+    $app['twig']->addGlobal('layout', $app['twig']->loadTemplate('layout/layout.twig'));
+});
 
-$app->register(new SilexPhpEngine\ViewServiceProvider, [
-  'view.paths'  => ROOT.'/app/view/%name%.php',
-  'assets.root' => 'public'
-]);
+if ($app['debug']) {
+  $app['twig']->addGlobal('env', 'production');
+} else {
+  $app['twig']->addGlobal('env', 'development');
+}
+
+
+$app->register(new Silex\Provider\ValidatorServiceProvider());
 
 // controllers
 $controllers = glob(ROOT.'/app/controller/*.php');

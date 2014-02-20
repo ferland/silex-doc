@@ -12,11 +12,14 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <title>Boilerplate {% if title is defined %}- {{title}}{% endif %}</title>
-
-    <link rel="stylesheet" href="public/css/bootstrap.css" />
-    <link rel="stylesheet" href="public/css/creditcard.css" />
+    {% if env == 'production' %}
+      <link rel="stylesheet" href="public/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="public/css/creditcard.min.css" />
+    {% else %}
+      <link rel="stylesheet" href="public/css/bootstrap.css" />
+      <link rel="stylesheet" href="public/css/creditcard.css" />
+    {% endif %}
 </head>
 <body>
   <!-- Static navbar -->
