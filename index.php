@@ -1,10 +1,5 @@
 <?php
 
-use Doctrine\MongoDB\Connection;
-use Doctrine\ODM\MongoDB\Configuration;
-use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
-
 define('ROOT',dirname(__DIR__.'/creditcard'));
 
 if (!file_exists($file = ROOT.'/vendor/autoload.php')) {
@@ -14,27 +9,14 @@ if (!file_exists($file = ROOT.'/vendor/autoload.php')) {
 $loader = require_once $file;
 $loader->add('Documents', ROOT.'/app');
 
-$connection = new Connection();
-
-$config = new Configuration();
-$config->setProxyDir(ROOT . '/app/assets/Proxies');
-$config->setProxyNamespace('Proxies');
-$config->setHydratorDir(ROOT . '/app/assets/Hydrators');
-$config->setHydratorNamespace('Hydrators');
-$config->setDefaultDB('ccapps');
-$config->setMetadataDriverImpl(AnnotationDriver::create(ROOT . '/app/Documents'));
-
-AnnotationDriver::registerAnnotationClasses();
-
 $app = new Silex\Application();
 
-$app['debug'] = getenv('MYAPP_DEBUG') == 'true' ?: false;
-
-$app['dm'] = $dm = DocumentManager::create($connection, $config);
+$app['debug'] = getenv('env') == 'true' ?: false;
 
 //register log
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => ROOT.'/public/logs/development.log',
+    'monolog.level' => Monolog\Logger::ERROR
 ));
 
 $app->register(new Silex\Provider\SessionServiceProvider());
@@ -53,10 +35,11 @@ $app->before(function () use ($app) {
 
 if ($app['debug']) {
   $app['twig']->addGlobal('env', 'production');
+  require_once ROOT.'/app/config/prod.php';
 } else {
   $app['twig']->addGlobal('env', 'development');
+  require_once ROOT.'/app/config/dev.php';
 }
-
 
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 
