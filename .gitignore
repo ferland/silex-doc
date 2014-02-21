@@ -8,3 +8,4 @@ npm-debug.log
 public/logs/*
 app/logs
 public/logs/development.log
+cache/*
