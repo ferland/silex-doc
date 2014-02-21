@@ -42,7 +42,8 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 // view
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => ROOT.'/app/view',
-    'twig.class_path'   => __DIR__.'/vendor/twig/lib',
+    'twig.class_path'   => ROOT.'/vendor/twig/lib',
+    'twig.options' => array('cache' => ROOT.'/cache'),
 ));
 
 $app->before(function () use ($app) {
