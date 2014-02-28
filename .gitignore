@@ -9,3 +9,4 @@ public/logs/*
 app/logs
 public/logs/development.log
 cache/*
+cache/

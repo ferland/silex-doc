@@ -42,6 +42,7 @@ module.exports = function(grunt) {
             'public/js/bootstrap/affix.js'
           ],
           'public/js/apps.js' : ['public/js/sites/*.js'],
+          'public/js/plugins.js' : ['public/js/plugins/*.js'],
         }
       }
     },
@@ -68,7 +69,8 @@ module.exports = function(grunt) {
       js: {
         files: {
           'public/js/bootstrap.min.js': ['public/js/bootstrap.js'],
-          'public/js/apps.min.js': ['public/js/apps.js']
+          'public/js/apps.min.js': ['public/js/apps.js'],
+          'public/js/plugins.min.js': ['public/js/plugins.js']
         }
       }
     },

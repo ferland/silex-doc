@@ -11,7 +11,11 @@ $loader->add('Documents', ROOT.'/app');
 
 $app = new Silex\Application();
 
+// $app->register(new DerAlex\Silex\YamlConfigServiceProvider(__DIR__ . '/src/Resources/config/settings.yml'));
+
 $app['debug'] = getenv('env') == 'true' ?: false;
+$app['base_url'] = 'http://boilerplate.loangarage.local:8080';
+$app['appName'] = 'Credit Card';
 
 //register log
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
@@ -25,7 +29,7 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => ROOT.'/app/view',
     'twig.class_path'   => ROOT.'/vendor/twig/lib',
-    'twig.options' => array('cache' => ROOT.'/cache'),
+    // 'twig.options' => array('cache' => ROOT.'/cache'),
 ));
 
 $app->before(function () use ($app) {
