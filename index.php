@@ -14,7 +14,7 @@ $app = new Silex\Application();
 // $app->register(new DerAlex\Silex\YamlConfigServiceProvider(__DIR__ . '/src/Resources/config/settings.yml'));
 
 $app['debug'] = getenv('env') == 'true' ?: false;
-$app['base_url'] = 'http://boilerplate.loangarage.local:8080';
+$app['base_url'] = 'http://'.$_SERVER['HTTP_HOST'];
 $app['appName'] = 'Credit Card';
 
 //register log
